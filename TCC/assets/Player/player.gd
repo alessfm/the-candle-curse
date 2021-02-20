@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
 const boost_speed = 500
-const max_speed = 90
+const max_speed = 75
 const stop_speed = 500
+
 var speed = Vector2.ZERO
+onready var animationPlayer = $AnimationPlayer
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
