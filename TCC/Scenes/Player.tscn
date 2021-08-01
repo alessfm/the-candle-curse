@@ -272,7 +272,7 @@ shape = SubResource( 1 )
 position = Vector2( 0.875, -9 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 32
+frame = 28
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody2D"]
 anims/AttackDown = SubResource( 2 )
