@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-# Player State Machine #
+# Player Structure #
 enum{
 	move,
 	roll,
@@ -9,7 +9,7 @@ enum{
 
 var state = move
 var speed = Vector2.ZERO
-# Player State Machine #
+# Player Structure #
 
 
 # Player Animation Layer #
@@ -46,15 +46,21 @@ func move_state(delta):
 		
 	speed = move_and_slide(speed)
 
+#controls roll
+func roll_state(delta):
+	pass
+
 #controls attack
 func attack_state(delta):
 	pass
 
-#controls roll
-func roll_state():
-	pass
-
-#call all functions to player
+#return the player's state machine 
 func _physics_process(delta):
-	move_state(delta)
+	match state:
+		move:
+			move_state(delta)
+		roll:
+			roll_state(delta)
+		attack:
+			attack_state(delta)
 # Player Physics Control #
