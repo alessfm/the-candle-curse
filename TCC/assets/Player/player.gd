@@ -23,14 +23,10 @@ func _ready():
 # Player Animation Layer #
 
 
-# Player Moviment Control #
+# Player Physics Control #
 const boost_speed = 500
 const max_speed = 75
 const stop_speed = 500
-
-#controls player phisics
-func _physics_process(delta):
-	move_state(delta)
 
 #controls move
 func move_state(delta):
@@ -49,5 +45,16 @@ func move_state(delta):
 		speed = speed.move_toward(Vector2.ZERO, stop_speed * delta)
 		
 	speed = move_and_slide(speed)
-# Player Moviment Control #
 
+#controls attack
+func attack_state(delta):
+	pass
+
+#controls roll
+func roll_state():
+	pass
+
+#call all functions to player
+func _physics_process(delta):
+	move_state(delta)
+# Player Physics Control #
