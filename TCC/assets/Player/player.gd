@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 # Player Structure #
 enum{
-	move,
+	attack,
 	roll,
-	attack
+	move
 }
 
 var state = move
@@ -28,6 +28,14 @@ const boost_speed = 500
 const max_speed = 75
 const stop_speed = 500
 
+#controls attack
+func attack_state(delta):
+	pass
+
+#controls roll
+func roll_state(delta):
+	pass
+
 #controls move
 func move_state(delta):
 	var input_vector = Vector2.ZERO
@@ -45,22 +53,17 @@ func move_state(delta):
 		speed = speed.move_toward(Vector2.ZERO, stop_speed * delta)
 		
 	speed = move_and_slide(speed)
-
-#controls roll
-func roll_state(delta):
-	pass
-
-#controls attack
-func attack_state(delta):
-	pass
+	
+	if Input.is_action_just_pressed("attack"):
+		state = attack
 
 #return the player's state machine 
 func _physics_process(delta):
 	match state:
-		move:
-			move_state(delta)
-		roll:
-			roll_state(delta)
 		attack:
 			attack_state(delta)
+		roll:
+			roll_state(delta)
+		move:
+			move_state(delta)
 # Player Physics Control #
